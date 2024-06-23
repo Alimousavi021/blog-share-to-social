@@ -1,0 +1,41 @@
+<body>
+    <!-- twitter link : -->
+    <a class="ShareLink" target="_blank" id="ShareTwitter1" href="#" onclick="shareSocial()">Share</a>
+    <!-- facebook link :  -->
+    <a class="ShareLink" target="_blank" id="ShareFaceBook1" href="#" onclick="shareSocial()">Share</a>
+    <!-- linkedin link : -->
+    <a class="ShareLink" target="_blank" id="ShareLinkedIn1" href="#" onclick="shareSocial()">Share</a>
+    <!-- reddit link : -->
+    <a class="ShareLink" target="_blank" id="ShareReddit1" href="#" onclick="shareSocial()">Share</a>
+    <!-- copy page url link : -->
+    <a class="ShareLink" href="#" id="copyUrl1">copy</a>
+
+    <script>
+        function shareSocial() {
+            var pageURL = window.location.href;
+            var linkedinURL = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURI(pageURL);
+            var TwitterURL = 'http://www.twitter.com/share?url=' + encodeURI(pageURL);
+            var FaceBookURL = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURI(pageURL);
+            var RedditURL = 'http://www.reddit.com/submit?url=' + encodeURI(pageURL);
+
+
+            document.getElementById('ShareLinkedIn1').setAttribute('href', linkedinURL);
+            document.getElementById('ShareTwitter1').setAttribute('href', TwitterURL);
+            document.getElementById('ShareFaceBook1').setAttribute('href', FaceBookURL);
+            document.getElementById('ShareReddit1').setAttribute('href', RedditURL);
+
+        }
+    </script>
+
+    <script>
+        document.getElementById("copyUrl1").addEventListener("click", function () {
+            var dummyInput = document.createElement("input");
+            document.body.appendChild(dummyInput);
+            dummyInput.setAttribute("value", window.location.href);
+            dummyInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummyInput);
+            alert("URL copied to clipboard: " + window.location.href);
+        });
+    </script>
+</body>
